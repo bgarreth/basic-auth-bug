@@ -28,7 +28,7 @@ Resources:
     Properties:
       EnableBranchAutoDeletion: true
       IAMServiceRole: !GetAtt AmplifyServiceRole.Arn
-      Name: amplify-cloudfront-basic-auth-bug
+      Name: basic-auth-bug
       Repository: "https://github.com/Leejjon/basic-auth-bug.git"
       AccessToken: !Ref GitHubAccessToken
   AmplifyMainBranch:
