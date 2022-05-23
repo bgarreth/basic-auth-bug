@@ -31,21 +31,14 @@ Resources:
       Name: basic-auth-bug
       Repository: "https://github.com/Leejjon/basic-auth-bug"
       AccessToken: !Ref GitHubAccessToken
+      BasicAuthConfig:
+        EnableBasicAuth: true
+        Username: "hello"
+        Password: "awssupport"
   AmplifyMainBranch:
     Type: AWS::Amplify::Branch
     Properties:
       AppId: !GetAtt AmplifyApp.AppId
       BranchName: "main"
-      EnableAutoBuild: true
-      Stage: "PRODUCTION"
-  AmplifyDevelopBranch:
-    Type: AWS::Amplify::Branch
-    Properties:
-      AppId: !GetAtt AmplifyApp.AppId
-      BasicAuthConfig:
-        EnableBasicAuth: true
-        Username: "hello"
-        Password: "awssupport"
-      BranchName: "develop"
       EnableAutoBuild: true
       Stage: "PRODUCTION"
