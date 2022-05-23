@@ -35,6 +35,9 @@ Resources:
         EnableBasicAuth: true
         Username: "hello"
         Password: "awssupport"
+      EnvironmentVariables:
+        - Name: "_LIVE_UPDATES"
+          Value: '[{"name":"Next.js version","pkg":"next-version","type":"internal","version":"11"}]'
   AmplifyMainBranch:
     Type: AWS::Amplify::Branch
     Properties:
