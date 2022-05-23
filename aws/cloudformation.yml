@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: "Next jsAmplify application with basic authentication"
+
+Parameters:
+  GitHubAccessToken:
+    Type: String
+    NoEcho: true
+
+Resources:
+  AmplifyServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument: |-
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": { "Service": "amplify.amazonaws.com" },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        }
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
+  AmplifyApp:
+    Type: AWS::Amplify::App
+    Properties:
+      EnableBranchAutoDeletion: true
+      IAMServiceRole: !GetAtt AmplifyServiceRole.Arn
+      Name: amplify-cloudfront-basic-auth-bug
+      Repository: "https://github.com/Leejjon/basic-auth-bug.git"
+      AccessToken: !Ref GitHubAccessToken
+  AmplifyMainBranch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      BranchName: "main"
+      EnableAutoBuild: true
+      Stage: "PRODUCTION"
+  AmplifyDevelopBranch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      BasicAuthConfig:
+        EnableBasicAuth: true
+        Username: "hello"
+        Password: "awssupport"
+      BranchName: "develop"
+      EnableAutoBuild: true
+      Stage: "PRODUCTION"
