@@ -145,7 +145,7 @@ export class WebAmplifyStack extends Stack {
       description: props.appDescription,
       iamServiceRole: amplifyRole.roleArn,
       repository: props.repository,
-      oauthToken: secret.secretValueFromJson("GithubPersonalToken").unsafeUnwrap(),
+      oauthToken: secret.secretValueFromJson("GithubKey").unsafeUnwrap(),
       basicAuthConfig: {
         enableBasicAuth: true,
         password: props.basicAuthPassword,
