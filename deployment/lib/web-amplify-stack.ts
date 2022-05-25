@@ -16,7 +16,6 @@ export interface AmplifyStackProps extends StackProps {
   appName: string;
   appDescription: string;
   stageName: string;
-  secretName: string;
   repository: string;
   branchName: string;
   basicAuthPassword: string;
@@ -27,7 +26,7 @@ export class WebAmplifyStack extends Stack {
     super(scope, id, props);
 
     const secret = secretsmanager.Secret.fromSecretAttributes(this, "Secret", {
-      secretPartialArn: `arn:aws:secretsmanager:${this.region}:${this.account}:secret:${props.secretName}`,
+      secretPartialArn: `arn:aws:secretsmanager:eu-central-1:039085306114:secret:css-secrets-3eVZL2`,
     });
 
     const amplifyRole = new iam.Role(this, "AmplifyRole", {

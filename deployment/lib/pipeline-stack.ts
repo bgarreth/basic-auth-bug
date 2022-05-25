@@ -6,7 +6,6 @@ import { WebAmplifyStack } from "./web-amplify-stack";
 export interface AmplifyStageProps extends StageProps {
   branchName: string;
   stageName: string;
-  secretName: string;
 }
 
 export class AmplifyStage extends Stage {
@@ -20,7 +19,6 @@ export class AmplifyStage extends Stage {
       appDescription: "Frontend built using Next.js2",
       branchName: props.branchName,
       stageName: props.stageName,
-      secretName: props.secretName,
       repository: repository,
       username: "hello",
       basicAuthPassword: "awssupport",
@@ -60,11 +58,7 @@ export class PipelineStack extends Stack {
       new AmplifyStage(this, "NonProd", {
         branchName: props.branchName,
         stageName: "DEVELOPMENT",
-        secretName: "css-secrets-3eVZL2",
       }),
-      {
-        pre: [new pipelines.ManualApprovalStep("ManualApproval")],
-      }
     );
   }
 }
