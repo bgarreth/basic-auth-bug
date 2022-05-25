@@ -146,12 +146,10 @@ export class WebAmplifyStack extends Stack {
       description: props.appDescription,
       iamServiceRole: amplifyRole.roleArn,
       repository: props.repository,
-      oauthToken: secret.secretValueFromJson("BitbucketOauthToken").toString(),
+      oauthToken: secret.secretValueFromJson("GithubOauthToken").unsafeUnwrap(),
       basicAuthConfig: {
         enableBasicAuth: true,
-        password: secret
-          .secretValueFromJson(props.basicAuthPassword)
-          .toString(),
+        password: props.basicAuthPassword,
         username: props.username,
       },
       environmentVariables: [
@@ -159,10 +157,6 @@ export class WebAmplifyStack extends Stack {
         //   name: "AMPLIFY_MONOREPO_APP_ROOT",
         //   value: "apps/web",
         // },
-        {
-          name: "BITBUCKET_TOKEN",
-          value: secret.secretValueFromJson("BitBucketToken").toString(),
-        },
         // If on this page they tell us that Next.js 12 is supported, update 11 to 12.
         // https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#update-app-nextjs-version
         {
