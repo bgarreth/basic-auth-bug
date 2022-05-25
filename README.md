@@ -26,4 +26,4 @@ To run this thing.
 - Usually the first time the deployments works.
 - Try changing something like the app description in the pipeline-stack.ts to trigger a cloudformation update. And commit this change and push it. It should trigger the amplify build.
 - And you can trigger the codepipeline to update the infra.
-- It breaks.
+- It breaks. Try logging in to your amplify url with username "hello" and password "awssupport"
