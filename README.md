@@ -25,3 +25,4 @@ To run this thing.
 - Go to the amplify app and click on the "run build" button
 - Usually the first time the deployments works.
 - Try changing something like the app description in the pipeline-stack.ts to trigger a cloudformation update.
+- It breaks.
