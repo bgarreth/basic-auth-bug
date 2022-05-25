@@ -60,7 +60,7 @@ export class PipelineStack extends Stack {
       new AmplifyStage(this, "NonProd", {
         branchName: props.branchName,
         stageName: "DEVELOPMENT",
-        secretName: "css-secrets-<>",
+        secretName: "css-secrets-3eVZL2",
       }),
       {
         pre: [new pipelines.ManualApprovalStep("ManualApproval")],
