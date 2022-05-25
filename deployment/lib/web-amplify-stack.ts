@@ -26,7 +26,7 @@ export class WebAmplifyStack extends Stack {
     super(scope, id, props);
 
     const secret = secretsmanager.Secret.fromSecretAttributes(this, "Secret", {
-      secretPartialArn: `arn:aws:secretsmanager:eu-west-1:299854659728:secret:GithubPersonalToken-RnAZl7`,
+      secretPartialArn: `arn:aws:secretsmanager:eu-west-2:299854659728:secret:github-oauth-wHoif6`,
     });
 
     const amplifyRole = new iam.Role(this, "AmplifyRole", {
@@ -145,7 +145,7 @@ export class WebAmplifyStack extends Stack {
       description: props.appDescription,
       iamServiceRole: amplifyRole.roleArn,
       repository: props.repository,
-      oauthToken: secret.secretValueFromJson("GithubKey").unsafeUnwrap(),
+      oauthToken: secret.secretValueFromJson("github-oauth").unsafeUnwrap(),
       basicAuthConfig: {
         enableBasicAuth: true,
         password: props.basicAuthPassword,
