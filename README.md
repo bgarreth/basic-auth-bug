@@ -24,5 +24,6 @@ To run this thing.
 - Verify that this pipeline runs once and creates the amplify app
 - Go to the amplify app and click on the "run build" button
 - Usually the first time the deployments works.
-- Try changing something like the app description in the pipeline-stack.ts to trigger a cloudformation update.
+- Try changing something like the app description in the pipeline-stack.ts to trigger a cloudformation update. And commit this change and push it. It should trigger the amplify build.
+- And you can trigger the codepipeline to update the infra.
 - It breaks.
