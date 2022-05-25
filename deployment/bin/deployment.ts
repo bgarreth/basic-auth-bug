@@ -6,10 +6,9 @@ import {PipelineStack} from "../lib/pipeline-stack";
 const app = new cdk.App();
 
 new PipelineStack(app, "basic-auth-bug-pipeline", {
-    codestarArn:
-        "arn:aws:codestar-connections:eu-central-1:039085306114:connection/010d9616-2ce5-4d82-a61d-75938f7b0deb",
+    codestarArn: "arn:aws:codestar-connections:eu-west-2:299854659728:connection/14962d1b-eec2-4c58-b3e4-61b29dcbfdbc",
     pipelineName: "basic-auth-bug-pipeline",
-    repositoryName: "leejjon/basic-auth-bug",
+    repositoryName: "bgarreth/basic-auth-bug",
     branchName: "addcdk",
-    accountId: "",
+    accountId: "299854659728",
 });
