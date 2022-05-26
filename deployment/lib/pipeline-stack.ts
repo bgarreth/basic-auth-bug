@@ -16,12 +16,12 @@ export class AmplifyStage extends Stage {
 
     new WebAmplifyStack(this, "WebAmplifyStack", {
       appName: "basic-auth-bug",
-      appDescription: "Frontend built using Next.js changed desc",
+      appDescription: "Frontend built using Next.js changed desc testing",
       branchName: props.branchName,
       stageName: props.stageName,
       repository: repository,
-      username: "hello",
-      basicAuthPassword: "awssupport",
+      username: "welcome",
+      basicAuthPassword: "garreth",
     });
   }
 }
